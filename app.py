@@ -1,11 +1,11 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app  = Flask("Olá")
 
 
-@app.route("/")
+@app.route("/teste")
 
 def ola():
-    return "Olá mundo, BOM DIA"
+    return render_template("hello.html")
 
 
