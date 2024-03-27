@@ -4,14 +4,10 @@ import sqlite3
 
 app  = Flask("Olá")
 
+app.config.from_object(__name__)
+
 DATABASE = "banco.bd"
 SECRET_KEY = "1234"
-
-app.configure.from_object(__name__)
-
-@app.route("/")
-
-
 
 def conectar():
     return sqlite3.connect(DATABASE)
@@ -19,10 +15,13 @@ def conectar():
 def before_request():
     g.bd =  conectar() 
 
-def teardown_request(f):
+def teardown_request():
     g.bd.close()
 
+@app.route("/")
 def ola():
-    return render_template("hello.html")
+    nomeUsuario = "Danilo"
+    listaUsuario = ["Lorena", "Daniel", "Louise", "Demethrius"]
+    return render_template("hello.html", nome=listaUsuario)
 
 
