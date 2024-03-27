@@ -22,6 +22,8 @@ def teardown_request():
 def ola():
     nomeUsuario = "Danilo"
     listaUsuario = ["Lorena", "Daniel", "Louise", "Demethrius"]
-    return render_template("hello.html", nome=listaUsuario)
+    posts = [{"titulo": "Meu titulo", "texto": "Meu texto", "data_criacao":"27/03/2024"},
+             {"titulo": "Meu titulo2", "texto": "Meu texto2", "data_criacao":"26/03/2024"}]
+    return render_template("hello.html", post=posts)
 
 
